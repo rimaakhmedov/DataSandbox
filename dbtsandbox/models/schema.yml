@@ -1,0 +1,39 @@
+version: 2
+
+sources:
+  - name: raw
+    tables:
+      - name: users
+      - name: tracks
+      - name: plays
+      - name: payments
+
+models:
+  - name: stg_users
+    description: "Нормализация таблицы пользователей"
+    columns:
+      - name: user_id
+        tests:
+          - not_null
+          - unique
+
+  - name: stg_tracks
+    description: "Нормализация таблицы треков"
+
+  - name: stg_plays
+    description: "Нормализация таблицы истории прослушиваний"
+
+  - name: stg_payments
+    description: "Нормализация таблицы платежей"
+
+  - name: mart_daily_user_activity
+    description: "Ежедневная активность пользователей"
+
+  - name: mart_track_popularity
+    description: "Популярность треков по количеству прослушиваний"
+
+  - name: mart_revenue_by_user
+    description: "Сводка по доходу с пользователей"
+
+  - name: mart_device_usage
+    description: "Разбивка по используемым устройствам"
